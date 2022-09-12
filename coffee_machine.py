@@ -65,12 +65,13 @@ def process_coins():
     n = int(input("Input number of nickels?: "))
     p = int(input("Input numbeer of pennies?: "))
     user_payment = ((q*.25)+(d*.10)+(n*.05)+(p*.01))
+    user_change = user_payment - MENU[user_input]['cost']
     if user_payment < MENU[user_input]['cost']:
         print("Sorry that is not enough money. Money refunded")
         return False
     else:
-        print(f"Here is ${user_payment - MENU[user_input]['cost']} dollars in change")
-        resources["money"] += user_payment
+        print(f"Here is ${user_change:.2f} dollars in change")
+        resources["money"] += (user_payment - user_change)
         return True
         
 
